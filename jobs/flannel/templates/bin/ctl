@@ -27,6 +27,7 @@ case $1 in
 
     exec /var/vcap/packages/flannel/bin/flanneld \
       -etcd-endpoints="http://<%= properties.apiserver.ip %>:4001" \
+      -ip-masq=<%= properties.ip-masq %> \
       >>$LOG_DIR/$JOB_NAME.log 2>&1
 
     ;;
