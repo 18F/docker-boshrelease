@@ -89,11 +89,13 @@ case $1 in
     echo "Stopping docker containers..."
     containers="$(/var/vcap/packages/docker/bin/docker --host unix://${DOCKER_PID_DIR}/docker.sock ps -q)"
     if [[ ! -z $containers ]]; then
+      set +e
       for container in $containers
       do
         echo "Stopping docker container ${container}"
         /var/vcap/packages/docker/bin/docker --host unix://${DOCKER_PID_DIR}/docker.sock stop ${container}
       done
+      set -e
     fi
 
     # Stop Docker daemon
