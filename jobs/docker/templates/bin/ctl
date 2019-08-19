@@ -100,7 +100,7 @@ case $1 in
 
     # Stop Docker daemon
     echo -n "Stopping docker daemon..."
-    kill_and_wait ${DOCKER_PID_FILE}
+    kill_and_wait ${DOCKER_PID_FILE} 300
     ;;
 
   *)
